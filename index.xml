@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login | Pogosians Chat</title>
+<style>
+  body {
+    margin:0; padding:0; height:100vh;
+    display:flex; justify-content:center; align-items:center; flex-direction: column;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align:center;
+  }
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  input {
+    padding: 14px;
+    margin: 8px 0;
+    width: 280px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+  }
+  button {
+    margin-top: 20px;
+    padding: 14px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    background: #0066ff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #0044cc;
+  }
+  .error {
+    color: #ffcccb;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <h1> "Welcome Pogospogosian"
+  <h2> "Page was created by HIMELl"
+
+  <input type="text" id="classInput" placeholder="Enter your class" />
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <input type="password" id="passwordInput" placeholder="Enter chat password" />
+
+  <button id="loginBtn">Join Chat</button>
+  <div class="error" id="errorMsg"></div>
+
+<script>
+  const loginBtn = document.getElementById('loginBtn');
+  const classInput = document.getElementById('classInput');
+  const nameInput = document.getElementById('nameInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const errorMsg = document.getElementByI('errorMsg');
+
+  loginBtn.addEventListener('click', () => {
+    const classVal = classInput.value.trim();
+    const nameVal = nameInput.value.trim();
+    const passVal = passwordInput.value;
+
+    if (!classVal || !nameVal || !passVal) {
+      errorMsg.textContent = "All fields are required.";
+      return;
+    }
+    if (passVal !== "12345") {
+      errorMsg.textContent = "Incorrect password.";
+      return;
+    }
+
+    // Save user info locally
+    localStorage.setItem("pogosian_class", classVal);
+    localStorage.setItem("pogosian_name", nameVal);
+
+    // Redirect to chat page
+    window.location.href = "chat.html";
+  });
+</script>
+</body>
+</html>
